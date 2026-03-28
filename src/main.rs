@@ -1,15 +1,14 @@
+mod window;
+
+use crate::window::*;
 use macroquad::prelude::*;
 
 #[macroquad::main("BasicShapes")]
 async fn main() {
+    let white = color::new(1.0, 1.0, 1.0, 1.0);
+    let window = Window::new(2000.0, 1200.0, white);
     loop {
-        clear_background(RED);
-        request_new_screen_size(2000.0, 1200.0);
-        draw_line(40.0, 40.0, 100.0, 200.0, 15.0, BLUE);
-        draw_rectangle(screen_width() / 2.0 - 60.0, 100.0, 120.0, 60.0, GREEN);
-        draw_circle(screen_width() - 30.0, screen_height() - 30.0, 15.0, YELLOW);
-        draw_text("HELLO", 20.0, 20.0, 20.0, DARKGRAY);
-
+        window.clear();
         next_frame().await
     }
 }
