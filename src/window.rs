@@ -6,7 +6,7 @@ pub struct Window {
     width: f32,
     background_color: Color,
 }
-impl window {
+impl Window {
     pub fn new(height: f32, width: f32, background_color: Color) -> Self {
         Window {
             height,
@@ -25,7 +25,7 @@ impl window {
         if self.height != screen_height() || self.width != screen_width() {
             request_new_screen_size(self.width, self.height);
         }
-        clear_background(background_color);
+        clear_background(self.background_color);
     }
 }
 
