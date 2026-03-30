@@ -8,5 +8,5 @@ pub trait Unit {
     fn render(&self, x: f32, y: f32, scaling: DrawTextureParams);
 }
 pub trait Buildable {
-    fn new(texture: Texture2D) -> Self;
+    fn new(texture: &Texture2D) -> Self;
 }

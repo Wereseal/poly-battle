@@ -5,17 +5,17 @@ use crate::tile::*;
 use crate::asset_manager;
 use crate::unit;
 
-pub struct Board {
+pub struct Board<'assets> {
     x: f32,
     y: f32,
     width: u32,
     height: u32,
     rows: u32,
     columns: u32,
-    content: Vec<Tile>,
+    content: Vec<Tile<'assets>>,
     scaling: texture::DrawTextureParams,
 }
-impl Board {
+impl Board<'_> {
     pub fn new(x: f32, y: f32, width: u32, height: u32, columns: u32, rows: u32, asset_manager: &asset_manager::AssetManager) -> Self {
         Board {
             x, 
@@ -24,7 +24,7 @@ impl Board {
             height,
             rows,
             columns,
-            content: vec![Tile::new(asset_manager.tile.clone()); (columns*rows).try_into().unwrap()],
+            content: vec![Tile::new(&asset_manager.tile); (columns*rows).try_into().unwrap()],
             scaling: texture::DrawTextureParams {
                 dest_size: Some(vec2((width as f32)/(columns as f32), (height as f32)/(rows as f32))),
                 ..Default::default()
@@ -40,7 +40,7 @@ impl Board {
             }
         }
     }
-    pub fn add_unit<T: unit::Buildable + unit::Unit + 'static>(&mut self, column: u32, row: u32, texture: Texture2D) {
+    pub fn add_unit<T: unit::Buildable + unit::Unit + 'static>(&mut self, column: u32, row: u32, texture: &Texture2D) {
         self.content[((column*self.rows) + row) as usize].assign_unit::<T>(texture);
     }
 }
