@@ -11,12 +11,12 @@ pub struct AssetManager {
 impl AssetManager {
     pub fn start() -> Self {
         AssetManager {
-            tile: Texture2D::from_file_with_format(include_bytes!("../assets/tile3.png"), None),
-            long_range: Texture2D::from_file_with_format(include_bytes!("../assets/long_range.png"), None),
-            short_range: Texture2D::from_file_with_format(include_bytes!("../assets/short_range.png"), None),
-            mid_range: Texture2D::from_file_with_format(include_bytes!("../assets/mid_range.png"), None),
-            base: Texture2D::from_file_with_format(include_bytes!("../assets/base.png"), None),
-            defender: Texture2D::from_file_with_format(include_bytes!("../assets/defender.png"), None),
+            tile: Texture2D::from_file_with_format(include_bytes!("../assets/tile.png"), None),
+            long_range: Texture2D::from_file_with_format(include_bytes!("../assets/long_range_blue.png"), None),
+            short_range: Texture2D::from_file_with_format(include_bytes!("../assets/short_range_blue.png"), None),
+            mid_range: Texture2D::from_file_with_format(include_bytes!("../assets/mid_range_blue.png"), None),
+            base: Texture2D::from_file_with_format(include_bytes!("../assets/base_blue.png"), None),
+            defender: Texture2D::from_file_with_format(include_bytes!("../assets/defender_blue.png"), None),
         }
     }
 }
