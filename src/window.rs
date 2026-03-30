@@ -2,15 +2,15 @@ use macroquad::color::Color;
 use macroquad::window::*;
 
 pub struct Window {
-    height: f32,
     width: f32,
+    height: f32,
     background_color: Color,
 }
 impl Window {
-    pub fn new(height: f32, width: f32, background_color: Color) -> Self {
+    pub fn new(width: f32, height: f32, background_color: Color) -> Self {
         Window {
-            height,
             width,
+            height,
             background_color,
         }
     }
