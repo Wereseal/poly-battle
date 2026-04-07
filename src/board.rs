@@ -17,6 +17,7 @@ pub struct Board<'assets> {
 }
 impl<'assets> Board<'assets> {
     pub fn new(x: f32, y: f32, width: u32, height: u32, columns: u32, rows: u32, asset_manager: &'assets asset_manager::AssetManager) -> Self {
+        let tile_asset = asset_manager.get_asset(asset_manager::AssetType::Tile);
         Board {
             x, 
             y,
@@ -24,7 +25,7 @@ impl<'assets> Board<'assets> {
             height,
             rows,
             columns,
-            content: vec![Tile::new(&asset_manager.tile); (columns*rows).try_into().unwrap()],
+            content: vec![Tile::new(tile_asset); (columns*rows).try_into().unwrap()],
             scaling: texture::DrawTextureParams {
                 dest_size: Some(vec2((width as f32)/(columns as f32), (height as f32)/(rows as f32))),
                 ..Default::default()

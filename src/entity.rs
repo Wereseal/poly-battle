@@ -3,6 +3,12 @@ use macroquad::prelude::DrawTextureParams;
 use macroquad::prelude::draw_texture_ex;
 use macroquad::texture;
 
+#[derive(PartialEq)]
+pub enum Team {
+    Red,
+    Blue,
+}
+
 #[derive(Clone, Copy)]
 pub enum Entity<'assets> {
     Scout { health: u32, damage: u32, range: u32, speed: u32, cost: u32, texture: &'assets Texture2D, },
