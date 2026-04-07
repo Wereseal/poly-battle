@@ -3,8 +3,7 @@ use macroquad::texture;
 use macroquad::math::vec2;
 use crate::tile::*;
 use crate::asset_manager;
-use crate::unit;
-use crate::structure;
+use crate::entity;
 
 pub struct Board<'assets> {
     x: f32,
@@ -41,10 +40,7 @@ impl<'assets> Board<'assets> {
             }
         }
     }
-    pub fn add_structure(&mut self, x: u32, y: u32, structure_type: structure::StructureType, texture: &'assets Texture2D) {
-        self.content[((x*self.rows)+y) as usize].add_structure(structure_type, texture);
-    }
-    pub fn add_unit(&mut self, x: u32, y: u32, unit_type: unit::UnitType, texture: &'assets Texture2D) {
-        self.content[((x*self.rows)+y) as usize].assign_unit(unit_type, texture);
+    pub fn add_entity(&mut self, x: u32, y: u32, entity: entity::Entity<'assets>) {
+        self.content[((x*self.rows)+y) as usize].assign_entity(entity);
     }
 }
