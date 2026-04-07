@@ -1,0 +1,10 @@
+[package]
+name = "poly_battle"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+macroquad = "0.4.14"
+
+[profile.release]
+debug = true
